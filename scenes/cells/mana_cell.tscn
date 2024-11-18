@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvwyu4rfasvv8"]
+
+[ext_resource type="PackedScene" uid="uid://cdyg52ea30beu" path="res://scenes/cells/base_cell.tscn" id="1_nb7bj"]
+[ext_resource type="Shader" path="res://scenes/cells/flash.gdshader" id="2_3cmis"]
+[ext_resource type="PackedScene" uid="uid://biwvosi5vm4t3" path="res://components/cell/mana_regen.tscn" id="3_2sr4x"]
+[ext_resource type="Texture2D" uid="uid://hw8yysxqr13" path="res://scenes/cells/mana_cell.svg" id="3_cbwaf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2tmys"]
+resource_local_to_scene = true
+shader = ExtResource("2_3cmis")
+shader_parameter/flash = 0.0
+
+[node name="ManaCell" instance=ExtResource("1_nb7bj")]
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_2tmys")
+texture = ExtResource("3_cbwaf")
+
+[node name="ManaRegen" parent="." index="4" instance=ExtResource("3_2sr4x")]
+amount = 3
+turnsNeeded = 5

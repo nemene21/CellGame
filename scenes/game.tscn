@@ -32,4 +32,14 @@ zoom = Vector2(0.8, 0.8)
 
 [node name="Placer" parent="." instance=ExtResource("4_0bxwu")]
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Mana" type="Label" parent="UI"]
+offset_left = 11.0
+offset_top = 12.0
+offset_right = 1044.0
+offset_bottom = 144.0
+theme_override_font_sizes/font_size = 96
+text = "MANA COUNTER HERE"
+
 [connection signal="timeout" from="TurnTimer" to="." method="_on_turn_timer_timeout"]

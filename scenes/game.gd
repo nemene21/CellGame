@@ -1,12 +1,20 @@
 extends Node2D
 class_name Game
 
+var playerMana := 35
+func update_mana_ui() -> void:
+	$UI/Mana.text = str(playerMana) + "/100"
+
+func add_mana(mana: int) -> void:
+	playerMana += mana
+	update_mana_ui()
+
 var turnWait := .0
 func wait(time: float) -> void:
 	turnWait += time
 
 var placeable_cells: Dictionary = {
-	"testCell": load("res://scenes/cells/base_cell.tscn")
+	"testCell": load("res://scenes/cells/mana_cell.tscn")
 }
 
 func _ready() -> void:
@@ -49,21 +57,26 @@ func _on_turn_timer_timeout() -> void:
 		$TurnTimer.start()
 		return
 	
-	
+	var speedup := 1.0
 	for cell: Cell in cells_arr:
 		cell.moveTurn.emit()
-		if turnWait > 0: await(get_tree().create_timer(turnWait).timeout)
+		if turnWait > 0: await(get_tree().create_timer(turnWait/speedup).timeout)
 		turnWait = 0
+		speedup += 0.05
 	
+	speedup = 1.0
 	for cell: Cell in cells_arr:
 		cell.restTurn.emit()
-		if turnWait > 0: await(get_tree().create_timer(turnWait).timeout)
+		if turnWait > 0: await(get_tree().create_timer(turnWait/speedup).timeout)
 		turnWait = 0
+		speedup += 0.05
 	
+	speedup = 1.0
 	for cell: Cell in cells_arr:
 		cell.deathTurn.emit()
-		if turnWait > 0: await(get_tree().create_timer(turnWait).timeout)
+		if turnWait > 0: await(get_tree().create_timer(turnWait/speedup).timeout)
 		turnWait = 0
+		speedup += 0.05
 	
 	$TurnTimer.start()
 

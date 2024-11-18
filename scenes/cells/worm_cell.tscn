@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbhpywe83eix4"]
+
+[ext_resource type="PackedScene" uid="uid://cdyg52ea30beu" path="res://scenes/cells/base_cell.tscn" id="1_uutm2"]
+[ext_resource type="Shader" path="res://scenes/cells/flash.gdshader" id="2_u60bg"]
+[ext_resource type="PackedScene" uid="uid://c7g8bn4ueurm4" path="res://components/cell/move.tscn" id="3_o0ut3"]
+[ext_resource type="PackedScene" uid="uid://chqcqsj1u2x0m" path="res://components/cell/attack.tscn" id="4_xmtst"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v4xdk"]
+resource_local_to_scene = true
+shader = ExtResource("2_u60bg")
+shader_parameter/flash = 0.0
+
+[node name="WormCell" instance=ExtResource("1_uutm2")]
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_v4xdk")
+
+[node name="Move" parent="." index="4" instance=ExtResource("3_o0ut3")]
+direction = Vector2i(1, 0)
+
+[node name="Attack" parent="." index="5" instance=ExtResource("4_xmtst")]
+damage = 10
+offset = Vector2i(1, 0)

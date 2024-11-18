@@ -41,13 +41,14 @@ func host(addr=""):
 	
 	var peer := ENetMultiplayerPeer.new()
 	var err  := peer.create_server(PORT, MAX_CONNECTIONS)
-	if err: 
+	if err:
 		print("Failed to host, ", err)
 		return err
 	
 	multiplayer.multiplayer_peer = peer
 	players[1] = playerData
 	playerConnected.emit(1, playerData)
+	print("Managed to host")
 
 func join(addr=""):
 	if addr.is_empty():
@@ -63,6 +64,7 @@ func join(addr=""):
 		return err
 	
 	multiplayer.multiplayer_peer = peer
+	print("Managed to join")
 
 @rpc("any_peer", "reliable", "call_local")
 func register_player(info: PlayerInfo) -> void:
