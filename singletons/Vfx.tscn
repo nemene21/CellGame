@@ -1,18 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bji5skecqmdy0"]
+[gd_scene load_steps=6 format=3 uid="uid://bji5skecqmdy0"]
 
 [ext_resource type="Script" path="res://singletons/vfx.gd" id="1_1svst"]
 [ext_resource type="PackedScene" uid="uid://b0bi3kdkxtmc6" path="res://scenes/vfx/cell_die_effect.tscn" id="2_ne7wa"]
 [ext_resource type="PackedScene" uid="uid://j3hnim0pawye" path="res://scenes/vfx/exploding_sprite.tscn" id="3_ivnjq"]
-<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://cyvo604vnaakf" path="res://scenes/vfx/splat.tscn" id="4_nia7x"]
+[ext_resource type="PackedScene" uid="uid://2tbivuf8kcku" path="res://scenes/vfx/popup_number.tscn" id="5_kysdx"]
 
 [node name="Vfx" type="Node"]
 script = ExtResource("1_1svst")
-vfx_to_add = Array[Resource]([ExtResource("2_ne7wa"), ExtResource("3_ivnjq"), ExtResource("4_nia7x")])
-=======
-[ext_resource type="PackedScene" uid="uid://dr4nai2ft5jmd" path="res://scenes/vfx/popup_number.tscn" id="4_ka5tv"]
-
-[node name="Vfx" type="Node"]
-script = ExtResource("1_1svst")
-vfx_to_add = Array[Resource]([ExtResource("2_ne7wa"), ExtResource("3_ivnjq"), ExtResource("4_ka5tv")])
->>>>>>> Stashed changes
+vfx_to_add = Array[Resource]([ExtResource("2_ne7wa"), ExtResource("3_ivnjq"), ExtResource("4_nia7x"), ExtResource("5_kysdx")])
