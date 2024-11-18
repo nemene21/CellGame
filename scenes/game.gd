@@ -14,7 +14,7 @@ func wait(time: float) -> void:
 	turnWait += time
 
 var placeable_cells: Dictionary = {
-	"testCell": load("res://scenes/cells/mana_cell.tscn")
+	"testCell": load("res://scenes/cells/worm_cell.tscn")
 }
 
 func _ready() -> void:
@@ -64,12 +64,16 @@ func _on_turn_timer_timeout() -> void:
 		turnWait = 0
 		speedup += 0.05
 	
+	cells_arr.shuffle()
+	
 	speedup = 1.0
 	for cell: Cell in cells_arr:
 		cell.restTurn.emit()
 		if turnWait > 0: await(get_tree().create_timer(turnWait/speedup).timeout)
 		turnWait = 0
 		speedup += 0.05
+	
+	cells_arr.shuffle()
 	
 	speedup = 1.0
 	for cell: Cell in cells_arr:
@@ -81,5 +85,6 @@ func _on_turn_timer_timeout() -> void:
 	$TurnTimer.start()
 
 func _draw() -> void:
+	return
 	for pos: Vector2i in cells:
 		draw_circle(pos * Global.CELLSIZE + Vector2.ONE * Global.CELLSIZE * 0.5, 10, Color.RED)

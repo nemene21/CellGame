@@ -27,9 +27,7 @@ func explode_sprite(
 	explosion.set_texture(sprite.get_texture())
 	
 	explosion.start()
-
 	sprite.queue_free()
-
 
 func set_target(new_target) -> void:
 	target = new_target

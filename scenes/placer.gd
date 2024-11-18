@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 	global_position = Global.dlerp(global_position, snapped, delta * 20)
 	
 	# Placing
-	if Input.is_action_just_pressed("place"):
+	if Input.is_action_pressed("place"):
 		attempt_place()
 	
 	# Color
