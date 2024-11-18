@@ -19,10 +19,11 @@ shader_parameter/scan_frequency = 100.0
 shader_parameter/scan_strength = 0.2
 shader_parameter/warp_speed = 0.3
 shader_parameter/warp_frequency = 1.0
-shader_parameter/warp_strength = 0.01
+shader_parameter/warp_strength = 0.04
 shader_parameter/noise = SubResource("NoiseTexture2D_vytea")
 
 [node name="Placer" type="Sprite2D"]
+z_index = 1
 material = SubResource("ShaderMaterial_5fj0e")
 texture = ExtResource("1_0k18j")
 script = ExtResource("3_qbkyj")

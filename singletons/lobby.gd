@@ -1,6 +1,6 @@
 extends Node
 
-const PORT: int = 7777
+const PORT: int = 40667
 const MAX_CONNECTIONS := 4
 
 signal playerConnected(id)

@@ -4,6 +4,10 @@ extends Sprite2D
 
 func can_place() -> bool:
 	var placePos: Vector2i = floor(get_global_mouse_position() / Global.CELLSIZE)
+	if placePos.x < 0 or placePos.x >= Global.WORLDSIZE.x or \
+	   placePos.y < 0 or placePos.y >= Global.WORLDSIZE.y:
+			return false
+	
 	return !game.cells.has(placePos)
 
 func attempt_place() -> void:
@@ -31,3 +35,6 @@ func _process(delta: float) -> void:
 	# Placing
 	if Input.is_action_just_pressed("place"):
 		attempt_place()
+	
+	# Color
+	material.set_shader_parameter("tint", lerp(Color.RED, Color("28ff00"), can_place()))
