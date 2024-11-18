@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cldsdonltmqj3"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_1mc27"]
+[ext_resource type="PackedScene" uid="uid://druqquof03id2" path="res://scenes/placer.tscn" id="4_0bxwu"]
+[ext_resource type="Texture2D" uid="uid://bwdpi5q8kiik5" path="res://scenes/place_border.svg" id="6_gr821"]
+[ext_resource type="Texture2D" uid="uid://cr00wpuawdjke" path="res://scenes/grid.png" id="6_t4dri"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_1mc27")
+
+[node name="TurnTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Grid" type="Sprite2D" parent="."]
+modulate = Color(0.385493, 0.385492, 0.385492, 1)
+z_index = -1
+position = Vector2(-7, -7)
+texture = ExtResource("6_t4dri")
+centered = false
+
+[node name="PlaceBorder" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(50, 0)
+texture = ExtResource("6_gr821")
+centered = false
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(960, 528)
+zoom = Vector2(0.8, 0.8)
+
+[node name="Placer" parent="." instance=ExtResource("4_0bxwu")]
+
+[connection signal="timeout" from="TurnTimer" to="." method="_on_turn_timer_timeout"]

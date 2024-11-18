@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://bji5skecqmdy0"]
+
+[ext_resource type="Script" path="res://singletons/vfx.gd" id="1_1svst"]
+[ext_resource type="PackedScene" uid="uid://b0bi3kdkxtmc6" path="res://scenes/vfx/cell_die_effect.tscn" id="2_ne7wa"]
+[ext_resource type="PackedScene" uid="uid://j3hnim0pawye" path="res://scenes/vfx/exploding_sprite.tscn" id="3_ivnjq"]
+
+[node name="Vfx" type="Node"]
+script = ExtResource("1_1svst")
+vfx_to_add = Array[Resource]([ExtResource("2_ne7wa"), ExtResource("3_ivnjq")])

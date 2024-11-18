@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb0ijeiqjxlvh"]
+
+[ext_resource type="Script" path="res://scenes/hostjoin.gd" id="1_plyqj"]
+
+[node name="Hostjoin" type="Node2D"]
+script = ExtResource("1_plyqj")
+
+[node name="Host" type="Button" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = 139.0
+offset_right = 289.0
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Host"
+
+[node name="Join" type="Button" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 26.0
+offset_top = 295.0
+offset_right = 269.0
+offset_bottom = 413.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Join"
+
+[node name="Address" type="TextEdit" parent="."]
+offset_left = 25.0
+offset_top = 36.0
+offset_right = 584.0
+offset_bottom = 106.0
+
+[connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://druqquof03id2"]
+
+[ext_resource type="Texture2D" uid="uid://20i53tg5sy0g" path="res://scenes/cells/worm_cell.svg" id="1_0k18j"]
+[ext_resource type="Shader" path="res://scenes/placer_hologram.gdshader" id="1_y5bet"]
+[ext_resource type="Script" path="res://scenes/placer.gd" id="3_qbkyj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_k17l2"]
+frequency = 0.0207
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vytea"]
+height = 1
+noise = SubResource("FastNoiseLite_k17l2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5fj0e"]
+shader = ExtResource("1_y5bet")
+shader_parameter/tint = Color(0.156863, 1, 0, 1)
+shader_parameter/scan_speed = 0.2
+shader_parameter/scan_frequency = 100.0
+shader_parameter/scan_strength = 0.2
+shader_parameter/warp_speed = 0.3
+shader_parameter/warp_frequency = 1.0
+shader_parameter/warp_strength = 0.01
+shader_parameter/noise = SubResource("NoiseTexture2D_vytea")
+
+[node name="Placer" type="Sprite2D"]
+material = SubResource("ShaderMaterial_5fj0e")
+texture = ExtResource("1_0k18j")
+script = ExtResource("3_qbkyj")

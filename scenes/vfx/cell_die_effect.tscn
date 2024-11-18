@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0bi3kdkxtmc6"]
+
+[ext_resource type="Texture2D" uid="uid://b2l5fgw44favk" path="res://scenes/vfx/circle.svg" id="1_pfje4"]
+[ext_resource type="Texture2D" uid="uid://20i53tg5sy0g" path="res://scenes/cells/worm_cell.svg" id="2_vndtb"]
+
+[sub_resource type="Curve" id="Curve_7lqp6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dsysc"]
+curve = SubResource("Curve_7lqp6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3clpc"]
+lifetime_randomness = 0.58
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(36, 36, 1)
+spread = 180.0
+initial_velocity_min = 69.89
+initial_velocity_max = 268.81
+gravity = Vector3(0, 50, 0)
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_dsysc")
+
+[node name="CellDieEffect" type="GPUParticles2D"]
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_3clpc")
+texture = ExtResource("1_pfje4")
+lifetime = 0.7
+explosiveness = 1.0
+
+[node name="WormCell" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.12549)
+show_behind_parent = true
+texture = ExtResource("2_vndtb")
