@@ -5,9 +5,12 @@ var playerMana := 35
 func update_mana_ui() -> void:
 	$UI/Mana.text = str(playerMana) + "/100"
 
-func add_mana(mana: int) -> void:
+func add_mana(mana: int, pos: Vector2) -> void:
 	playerMana += mana
 	update_mana_ui()
+	var number = Vfx.play_vfx("popup_number", pos)
+	number.text = "+" + str(mana)
+	number.set_modulate(Color("#0099db"))
 
 var turnWait := .0
 func wait(time: float) -> void:

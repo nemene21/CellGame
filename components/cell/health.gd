@@ -32,10 +32,13 @@ func die() -> void:
 		splat.modulate *= dieParticleColor
 
 @rpc("any_peer", "call_local", "reliable")
-func hurt(dmg: int) -> void:
+func hurt(dmg: int, pos: Vector2) -> void:
 	hp -= dmg
 	AudioManager.play_sound("cell_hit", 1, 1, 0.3, 0.2)
 	parent.get_node("AnimationPlayer").play("hit")
+	var number = Vfx.play_vfx("popup_number", pos)
+	number.text = "-" + str(dmg)
+	number.set_modulate(Color("#a22633"))
 
 func deathcheck() -> bool:
 	# Cell went out of bounds
