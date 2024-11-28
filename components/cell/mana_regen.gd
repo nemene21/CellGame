@@ -11,7 +11,8 @@ func _ready() -> void:
 	parent.restTurn.connect(advance_regen)
 
 func regen() -> void:
-	game.add_mana(amount)
+	game.add_mana(parent.global_position, amount)
+	game.wait(0.05)
 
 func advance_regen() -> void:
 	turnsLeft -= 1

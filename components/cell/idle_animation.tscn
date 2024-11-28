@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsoe0vjstapkc"]
+
+[ext_resource type="Script" path="res://components/cell/idle_animation.gd" id="1_8xwta"]
+
+[node name="IdleAnimation" type="Node"]
+script = ExtResource("1_8xwta")
+idleAnimation = "cute_idle"

@@ -1,6 +1,15 @@
 extends Sprite2D
 
 @onready var game: Game = get_parent()
+var placing := "SparkCell"
+
+func update_texture() -> void:
+	var instance: Cell = game.placeable_cells[placing].instantiate()
+	texture = instance.get_node("Sprite2D").texture
+	instance.free()
+
+func _ready() -> void:
+	update_texture()
 
 func can_place() -> bool:
 	var placePos: Vector2i = floor(get_global_mouse_position() / Global.CELLSIZE)
@@ -17,10 +26,10 @@ func attempt_place() -> void:
 	var hash_num := hash(Global.time)
 	var placePos: Vector2 = floor(get_global_mouse_position() / Global.CELLSIZE)
 	game.place_cell.rpc(
-		"testCell", Global.mirror_board_x(placePos), Lobby.multiplayer.is_server(), hash_num
+		placing, Global.mirror_board_x(placePos), Lobby.multiplayer.is_server(), hash_num
 	)
 	game.place_cell(
-		"testCell", placePos, Lobby.multiplayer.is_server(), hash_num
+		placing, placePos, Lobby.multiplayer.is_server(), hash_num
 	)
 
 

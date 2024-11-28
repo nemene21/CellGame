@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf1h35xkcxjn2"]
+
+[ext_resource type="PackedScene" uid="uid://cdyg52ea30beu" path="res://scenes/cells/base_cell.tscn" id="1_t0mek"]
+[ext_resource type="Shader" path="res://scenes/cells/flash.gdshader" id="2_c15ia"]
+[ext_resource type="Texture2D" uid="uid://c1dn7fij35s77" path="res://scenes/cells/spark_cell.svg" id="3_f4drx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0j2hd"]
+resource_local_to_scene = true
+shader = ExtResource("2_c15ia")
+shader_parameter/flash = 0.0
+
+[node name="SparkCell" instance=ExtResource("1_t0mek")]
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_0j2hd")
+texture = ExtResource("3_f4drx")
+
+[node name="IdleAnimation" parent="." index="4"]
+idleAnimation = "bounce_idle"

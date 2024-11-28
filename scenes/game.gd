@@ -17,7 +17,9 @@ func wait(time: float) -> void:
 	turnWait += time
 
 var placeable_cells: Dictionary = {
-	"testCell": load("res://scenes/cells/worm_cell.tscn")
+	"WormCell": load("res://scenes/cells/worm_cell.tscn"),
+	"SparkCell": load("res://scenes/cells/spark_cell.tscn"),
+	"ManaCell": load("res://scenes/cells/mana_cell.tscn")
 }
 
 func _ready() -> void:

@@ -21,6 +21,7 @@ Lobby="*res://singletons/lobby.gd"
 Global="*res://singletons/global.tscn"
 AudioManager="*res://singletons/audio_manager.tscn"
 Vfx="*res://singletons/Vfx.tscn"
+PostProcessing="*res://singletons/post_processing.tscn"
 
 [display]
 

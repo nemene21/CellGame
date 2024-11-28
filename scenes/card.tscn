@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccef27wmgsdw4"]
+
+[ext_resource type="Texture2D" uid="uid://cansevet4owdx" path="res://scenes/card.png" id="1_nuair"]
+[ext_resource type="Texture2D" uid="uid://20i53tg5sy0g" path="res://scenes/cells/worm_cell.svg" id="2_4f51n"]
+[ext_resource type="Shader" path="res://scenes/dropshadow.gdshader" id="3_s8bok"]
+[ext_resource type="Texture2D" uid="uid://ckrgq1cpx4rut" path="res://scenes/mana.svg" id="4_7a4es"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kcimx"]
+shader = ExtResource("3_s8bok")
+
+[node name="Card" type="Sprite2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_nuair")
+
+[node name="CellIconShadow" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_kcimx")
+position = Vector2(-75, -172)
+texture = ExtResource("2_4f51n")
+
+[node name="CellIcon" type="Sprite2D" parent="."]
+position = Vector2(-75, -181)
+texture = ExtResource("2_4f51n")
+
+[node name="Description" type="Label" parent="."]
+offset_left = -26.0
+offset_top = -223.0
+offset_right = 119.0
+offset_bottom = -177.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_outline_size = 14
+theme_override_font_sizes/font_size = 32
+text = "Worm
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ManaLabel" type="Label" parent="."]
+offset_left = 17.0
+offset_top = -180.0
+offset_right = 94.0
+offset_bottom = -123.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_outline_size = 14
+theme_override_font_sizes/font_size = 32
+text = "15"
+horizontal_alignment = 2
+
+[node name="ManaIcon" type="Sprite2D" parent="ManaLabel"]
+position = Vector2(92, 24)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_7a4es")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -127.0
+offset_top = -112.0
+offset_right = 128.0
+offset_bottom = 221.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/line_separation = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
