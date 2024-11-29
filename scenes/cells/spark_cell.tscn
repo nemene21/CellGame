@@ -17,6 +17,9 @@ shader_parameter/flash = 0.0
 material = SubResource("ShaderMaterial_0j2hd")
 texture = ExtResource("3_f4drx")
 
+[node name="Health" parent="." index="2"]
+dieParticleColor = Color(0.996078, 0.682353, 0.203922, 1)
+
 [node name="IdleAnimation" parent="." index="4"]
 idleAnimation = "bounce_idle"
 

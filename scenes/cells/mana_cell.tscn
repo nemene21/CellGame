@@ -16,6 +16,9 @@ shader_parameter/flash = 0.0
 material = SubResource("ShaderMaterial_2tmys")
 texture = ExtResource("3_cbwaf")
 
+[node name="Health" parent="." index="2"]
+dieParticleColor = Color(0, 0.6, 0.858824, 1)
+
 [node name="ManaRegen" parent="." index="4" instance=ExtResource("3_2sr4x")]
 amount = 3
 turnsNeeded = 1
