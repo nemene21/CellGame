@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfh37ojxfalpq"]
+
+[ext_resource type="Script" path="res://components/cell/activator.gd" id="1_ih6ny"]
+
+[node name="Activator" type="Node"]
+script = ExtResource("1_ih6ny")

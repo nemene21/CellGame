@@ -3,6 +3,10 @@ extends Sprite2D
 @onready var game: Game = get_parent()
 var placing := "SparkCell"
 
+var placeBorder := 10
+var placeBorderPos = .0
+@export var placeBorderSprite: Sprite2D
+
 func update_texture() -> void:
 	var instance: Cell = game.placeable_cells[placing].instantiate()
 	texture = instance.get_node("Sprite2D").texture
@@ -17,6 +21,8 @@ func can_place() -> bool:
 	   placePos.y < 0 or placePos.y >= Global.WORLDSIZE.y:
 			return false
 	
+	if placePos.x >= placeBorder:
+		return false
 	return !game.cells.has(placePos)
 
 func attempt_place() -> void:
@@ -47,3 +53,16 @@ func _process(delta: float) -> void:
 	
 	# Color
 	material.set_shader_parameter("tint", lerp(Color.RED, Color("28ff00"), can_place()))
+	
+	# Swapping
+	for i in 5:
+		if Input.is_action_just_pressed("Slot " + str(i+1)):
+			placing = ["WormCell", "ManaCell", "SparkCell"][i]
+			update_texture()
+	
+	# Place border
+	placeBorderSprite.global_position.x = placeBorderPos
+	placeBorderSprite.global_position.y = 540
+	
+	var wantedPos := placeBorder * Global.CELLSIZE
+	placeBorderPos = Global.dlerp(placeBorderPos, wantedPos, 20 * delta)

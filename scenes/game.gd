@@ -13,6 +13,7 @@ func add_mana(pos: Vector2, mana: int) -> void:
 	number.modulate = Color("#2ce8f5")
 
 var turnWait := .0
+var speedup := .0
 func wait(time: float) -> void:
 	turnWait += time
 
@@ -62,7 +63,7 @@ func _on_turn_timer_timeout() -> void:
 		$TurnTimer.start()
 		return
 	
-	var speedup := 1.0
+	speedup = 1.0
 	for cell: Cell in cells_arr:
 		cell.moveTurn.emit()
 		if turnWait > 0: await(get_tree().create_timer(turnWait/speedup).timeout)

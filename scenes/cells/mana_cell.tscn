@@ -18,4 +18,4 @@ texture = ExtResource("3_cbwaf")
 
 [node name="ManaRegen" parent="." index="4" instance=ExtResource("3_2sr4x")]
 amount = 3
-turnsNeeded = 5
+turnsNeeded = 1

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://druqquof03id2"]
+[gd_scene load_steps=8 format=3 uid="uid://druqquof03id2"]
 
 [ext_resource type="Texture2D" uid="uid://20i53tg5sy0g" path="res://scenes/cells/worm_cell.svg" id="1_0k18j"]
 [ext_resource type="Shader" path="res://scenes/placer_hologram.gdshader" id="1_y5bet"]
 [ext_resource type="Script" path="res://scenes/placer.gd" id="3_qbkyj"]
+[ext_resource type="Texture2D" uid="uid://bwdpi5q8kiik5" path="res://scenes/place_border.svg" id="4_ux6em"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_k17l2"]
 frequency = 0.0207
@@ -22,8 +23,12 @@ shader_parameter/warp_frequency = 1.0
 shader_parameter/warp_strength = 0.04
 shader_parameter/noise = SubResource("NoiseTexture2D_vytea")
 
-[node name="Placer" type="Sprite2D"]
+[node name="Placer" type="Sprite2D" node_paths=PackedStringArray("placeBorderSprite")]
 z_index = 1
 material = SubResource("ShaderMaterial_5fj0e")
 texture = ExtResource("1_0k18j")
 script = ExtResource("3_qbkyj")
+placeBorderSprite = NodePath("PlaceBorder")
+
+[node name="PlaceBorder" type="Sprite2D" parent="."]
+texture = ExtResource("4_ux6em")

@@ -2,7 +2,6 @@ extends Node
 class_name MoveComp
 
 @export var direction: Vector2i
-@export var host_team := true
 @onready var parent: Cell = get_parent()
 @onready var game: Game = parent.get_parent()
 
