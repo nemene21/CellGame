@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cldsdonltmqj3"]
+[gd_scene load_steps=5 format=3 uid="uid://cldsdonltmqj3"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_1mc27"]
 [ext_resource type="PackedScene" uid="uid://druqquof03id2" path="res://scenes/placer.tscn" id="4_0bxwu"]
+[ext_resource type="Texture2D" uid="uid://cqn327mucw2yw" path="res://scenes/heart.svg" id="4_i8lmc"]
 [ext_resource type="Texture2D" uid="uid://cr00wpuawdjke" path="res://scenes/grid.png" id="6_t4dri"]
 
 [node name="Game" type="Node2D"]
@@ -33,5 +34,30 @@ offset_right = 1044.0
 offset_bottom = 144.0
 theme_override_font_sizes/font_size = 96
 text = "MANA COUNTER HERE"
+
+[node name="Heart" type="Sprite2D" parent="UI"]
+position = Vector2(67, 994)
+texture = ExtResource("4_i8lmc")
+
+[node name="Label" type="Label" parent="UI/Heart"]
+offset_left = 61.0
+offset_top = -19.0
+offset_right = 233.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 32
+text = "player 1 hp"
+
+[node name="Heart2" type="Sprite2D" parent="UI"]
+position = Vector2(1863, 1001)
+texture = ExtResource("4_i8lmc")
+
+[node name="Label" type="Label" parent="UI/Heart2"]
+offset_left = -282.0
+offset_top = -21.0
+offset_right = -51.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 32
+text = "player 2 health"
+horizontal_alignment = 2
 
 [connection signal="timeout" from="TurnTimer" to="." method="_on_turn_timer_timeout"]

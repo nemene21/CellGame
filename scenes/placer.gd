@@ -3,7 +3,7 @@ extends Sprite2D
 @onready var game: Game = get_parent()
 var placing := "SparkCell"
 
-var placeBorder := 10
+var placeBorder := 16
 var placeBorderPos = .0
 @export var placeBorderSprite: Sprite2D
 

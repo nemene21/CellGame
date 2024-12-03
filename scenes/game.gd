@@ -1,6 +1,24 @@
 extends Node2D
 class_name Game
 
+var player1Hp := 5
+var player2Hp := 5
+
+@rpc("any_peer", "call_remote", "reliable")
+func hit_player(friendly: bool) -> void:
+	if friendly:
+		player2Hp -= 1
+	else:
+		player1Hp -= 1
+	update_hp_ui()
+	
+	if Lobby.multiplayer.is_server():
+		hit_player.rpc(!friendly)
+
+func update_hp_ui() -> void:
+	$UI/Heart/Label.text  = str(player1Hp)
+	$UI/Heart2/Label.text = str(player2Hp)
+
 var playerMana := 35
 func update_mana_ui() -> void:
 	$UI/Mana.text = str(playerMana) + "/100"
@@ -25,6 +43,8 @@ var placeable_cells: Dictionary = {
 
 func _ready() -> void:
 	Vfx.set_target(self)
+	update_hp_ui()
+	update_mana_ui()
 
 func _process(delta: float) -> void:
 	queue_redraw()

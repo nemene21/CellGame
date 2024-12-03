@@ -42,9 +42,11 @@ func hurt(dmg: int) -> void:
 	number.modulate = Color("#a22633")
 
 func deathcheck() -> bool:
+	if dead: return true
 	# Cell went out of bounds
 	if posComp.position.x < 0 or posComp.position.x >= Global.WORLDSIZE.x:
 		die.rpc()
+		game.hit_player(parent.friendly())
 		return true
 	
 	if hp <= 0:
