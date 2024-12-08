@@ -1,10 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://citfr1a4lamrj"]
+[gd_scene load_steps=6 format=3 uid="uid://citfr1a4lamrj"]
 
 [ext_resource type="Script" path="res://singletons/audio_manager.gd" id="1_ni4mq"]
 [ext_resource type="AudioStream" uid="uid://ccimcny6begnh" path="res://components/cell/move.mp3" id="2_mauyb"]
 [ext_resource type="AudioStream" uid="uid://biy3uhe7x3n47" path="res://components/cell/cell_die.wav" id="3_x0rff"]
 [ext_resource type="AudioStream" uid="uid://df0b0nkcas0bl" path="res://components/cell/cell_hit.wav" id="4_ue4pk"]
+[ext_resource type="AudioStream" uid="uid://cpcoc4rjnleef" path="res://music/germs(nospores).mp3" id="5_ojt38"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_ni4mq")
 sounds_to_add = Array[Resource]([ExtResource("2_mauyb"), ExtResource("3_x0rff"), ExtResource("4_ue4pk")])
+tracks_to_add = Array[Resource]([ExtResource("5_ojt38")])

@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready() -> void:
+	AudioManager.play_track("germs(nospores)")
 	$Address.text = str(Lobby.get_local_ip())
 
 func _on_host_pressed() -> void:
