@@ -12,6 +12,13 @@ func hit_player(friendly: bool) -> void:
 		player1Hp -= 1
 	update_hp_ui()
 	
+	if player1Hp <= 0:
+		$UI/WinLose.text = "You lost, cope and seethe"
+		$UI/WinLose.show()
+	elif player2Hp <= 0:
+		$UI/WinLose.text = "You won, lucked out"
+		$UI/WinLose.show()
+	
 	if Lobby.multiplayer.is_server():
 		hit_player.rpc(!friendly)
 
