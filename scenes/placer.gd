@@ -23,7 +23,7 @@ func can_place() -> bool:
 	
 	if placePos.x >= placeBorder:
 		return false
-	return !game.cells.has(placePos)
+	return !game.cells.has(placePos) and game.placeTime >= 0
 
 func attempt_place() -> void:
 	if !can_place():
@@ -40,6 +40,8 @@ func attempt_place() -> void:
 
 
 func _process(delta: float) -> void:
+	visible = game.placeTime >= 0
+	
 	# Following mouse
 	var mousePos := get_global_mouse_position()
 	var snapped: Vector2 = floor(mousePos / Global.CELLSIZE) * Global.CELLSIZE

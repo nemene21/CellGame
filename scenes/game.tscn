@@ -10,7 +10,6 @@ script = ExtResource("1_1mc27")
 
 [node name="TurnTimer" type="Timer" parent="."]
 one_shot = true
-autostart = true
 
 [node name="Grid" type="Sprite2D" parent="."]
 modulate = Color(0.385493, 0.385492, 0.385492, 1)
@@ -72,4 +71,16 @@ text = "win/lose"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PlaceTimer" type="Label" parent="UI"]
+offset_left = 900.0
+offset_top = 486.0
+offset_right = 1027.0
+offset_bottom = 574.0
+theme_override_font_sizes/font_size = 64
+text = "1:30"
+
+[node name="PlaceTimerSeconds" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="TurnTimer" to="." method="_on_turn_timer_timeout"]
+[connection signal="timeout" from="PlaceTimerSeconds" to="." method="_on_place_timer_seconds_timeout"]

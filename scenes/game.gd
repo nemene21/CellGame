@@ -4,6 +4,10 @@ class_name Game
 var player1Hp := 5
 var player2Hp := 5
 
+var placeTime := 0
+var turnsLeft := 0
+var maxTurns := 5
+
 @rpc("any_peer", "call_remote", "reliable")
 func hit_player(friendly: bool) -> void:
 	if friendly:
@@ -115,9 +119,25 @@ func _on_turn_timer_timeout() -> void:
 		turnWait = 0
 		speedup += 0.05
 	
+	turnsLeft -= 1
+	if turnsLeft == 0:
+		$PlaceTimerSeconds.start()
+		placeTime = 10
+		return
 	$TurnTimer.start()
+	
 
 func _draw() -> void:
 	return
 	for pos: Vector2i in cells:
 		draw_circle(pos * Global.CELLSIZE + Vector2.ONE * Global.CELLSIZE * 0.5, 10, Color.RED)
+
+
+func _on_place_timer_seconds_timeout() -> void:
+	placeTime -= 1
+	$UI/PlaceTimer.text = str(placeTime / 60) + ":" + str(placeTime - 60 * floor(placeTime/60.0))
+	
+	if placeTime < 0:
+		$PlaceTimerSeconds.stop()
+		$TurnTimer.start()
+		turnsLeft = maxTurns
