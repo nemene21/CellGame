@@ -26,6 +26,7 @@ func die() -> void:
 	
 	AudioManager.play_sound("cell_die", 0.33, 0.4, 0.2, 0.2)
 	Vfx.explode_sprite(parent.get_node("Sprite2D"), 2000, 0, Vector2.ZERO, 6)
+	game.camera.shake(8, 0.15)
 	
 	for i in 3:
 		var splat = Vfx.play_vfx("splat", parent.global_position, 0, Vector2.ONE, 20)

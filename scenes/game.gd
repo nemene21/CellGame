@@ -8,6 +8,8 @@ var placeTime := 0
 var turnsLeft := 0
 var maxTurns := 5
 
+@onready var camera: ShakeableCam = $Camera
+
 @rpc("any_peer", "call_remote", "reliable")
 func hit_player(friendly: bool) -> void:
 	if friendly:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cldsdonltmqj3"]
+[gd_scene load_steps=6 format=3 uid="uid://cldsdonltmqj3"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_1mc27"]
+[ext_resource type="Script" path="res://scenes/camera.gd" id="3_0bond"]
 [ext_resource type="PackedScene" uid="uid://druqquof03id2" path="res://scenes/placer.tscn" id="4_0bxwu"]
 [ext_resource type="Texture2D" uid="uid://cqn327mucw2yw" path="res://scenes/heart.svg" id="4_i8lmc"]
 [ext_resource type="Texture2D" uid="uid://cr00wpuawdjke" path="res://scenes/grid.png" id="6_t4dri"]
@@ -21,6 +22,7 @@ centered = false
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(960, 528)
 zoom = Vector2(0.8, 0.8)
+script = ExtResource("3_0bond")
 
 [node name="Placer" parent="." instance=ExtResource("4_0bxwu")]
 

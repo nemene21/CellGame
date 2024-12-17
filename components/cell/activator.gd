@@ -15,10 +15,12 @@ func activate() -> void:
 		return
 	var cell: Cell = game.cells[targetPos]
 	
+	if !is_instance_valid(cell): return
 	cell.moveTurn.emit()
 	if game.turnWait > 0: await(get_tree().create_timer(game.turnWait/game.speedup).timeout)
 	game.turnWait = 0
 	
+	if !is_instance_valid(cell): return
 	cell.restTurn.emit()
 	if game.turnWait > 0: await(get_tree().create_timer(game.turnWait/game.speedup).timeout)
 	game.turnWait = 0
